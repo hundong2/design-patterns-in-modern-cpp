@@ -54,10 +54,8 @@ struct Square : Shape
   }
 };
 
-// we are not changing the base class of existing
-// objects
-
-// cannot make, e.g., ColoredSquare, ColoredCircle, etc.
+// 이미 존재하는 객체의 베이스 클래스를 변경하는 것은 아니다.
+// 예를 들어 ColoredSquare, ColoredCircle 같은 것들은 만들 수 없다.
 
 struct ColoredShape : Shape
 {
@@ -100,9 +98,9 @@ struct TransparentShape : Shape
   }
 };
 
-// mixin inheritance
+// 믹스인(mixin) 상속
 
-// note: class, not typename
+// 노트: typename이 아니라 class 이다
 template <typename T> struct ColoredShape2 : T
 {
   static_assert(is_base_of<Shape, T>::value,
@@ -116,8 +114,8 @@ template <typename T> struct ColoredShape2 : T
   template <typename...Args>
   ColoredShape2(const string& color, Args ...args)
     : T(std::forward<Args>(args)...), color{color}
-    // you cannot call base class ctor here
-    // b/c you have no idea what it is
+    // 여기서 베이스 클래스의 소멸자를 호출할 수는 없다.
+    // 왜냐면 소멸자를 알 수가 없기 때문이다.
   {
   }
 
@@ -157,7 +155,7 @@ void wrapper()
   ColoredShape red_circle{ circle, "red" };
   cout << red_circle.str() << endl;
 
-  //red_circle.resize(); // oops
+  //red_circle.resize(); // 이런!
 
   TransparentShape red_half_visible_circle{ red_circle, 128 };
   cout << red_half_visible_circle.str() << endl;
@@ -165,7 +163,7 @@ void wrapper()
 
 void mixin_inheritance()
 {
-  // won't work without a default constructor
+  // 디폴스 생성자 없이는 동작하지 않는다.
   ColoredShape2<Circle> green_circle{ "green", 5 };
 
   cout << green_circle.str() << endl;
@@ -221,10 +219,10 @@ template <typename Func> auto make_logger2(Func func,
   return Logger2<Func>{ func, name }; 
 }
 
-// need partial specialization for this to work
+// 다음 코드가 제대로 동작하기 위해서는 부분적인 특수화가 필요하다.
 template <typename> struct Logger3;
 
-// return type and argument list
+// 리턴 타입과 인자 목록
 template <typename R, typename... Args> 
 struct Logger3<R(Args...)>
 {
@@ -264,7 +262,7 @@ void function_decorator()
 {
   //Logger([]() {cout << "Hello" << endl; }, "HelloFunction")();
   
-  // cannot do this
+  // 다음 코드는 동작할 수 없다.
   //make_logger2([]() {cout << "Hello" << endl; }, "HelloFunction")();
   auto call = make_logger2([]() {cout << "Hello!" << endl; }, "HelloFunction");
   call();
@@ -280,11 +278,11 @@ void constructor_forwarding()
     virtual string str() const { return string{}; }
   };
 
-  // we don't want this to be legal, thus a static_assert above
+  // 아래의 코드가 허락되어서는 안된다. 위의 static_assert로 막는다.
   //ColoredShape2<NotAShape> legal;
 
-  // no code completion for this case
-  // can comment out argument, too! (default constructor)
+  // 이 경우 코드 컴플리션이 동작하지 않는다.
+  // 인자를 주석처리 할 수도 있다(디폴트 생성자).
   TransparentShape2<Square> hidden_square{ 1, 2 };
   cout << hidden_square.str() << endl;
 

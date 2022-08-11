@@ -29,7 +29,7 @@ struct LineToPointAdapter
     static int count = 0;
     TRACE("%d: Generating points for line (no caching)\n", count++);
 
-    // no interpolation
+    // 보간 없음
     int left = min(line.start.x, line.end.x);
     int right = max(line.start.x, line.end.x);
     int top = min(line.start.y, line.end.y);
@@ -37,7 +37,7 @@ struct LineToPointAdapter
     int dx = right - left;
     int dy = line.end.y - line.start.y;
     
-    // only vertical or horizontal lines
+    // 수직 또는 수평 라인만 존재
     if (dx == 0)
     {
       // vertical
@@ -70,12 +70,12 @@ struct LineToPointCachingAdapter
     boost::hash<Line> hash;
     line_hash = hash(line);
     if (cache.find(line_hash) != cache.end())
-      return; // we already have it
+      return; // 이미 가지고 있음
 
     static int count = 0;
     TRACE("%d: Generating points for line (with caching)\n", count++);
 
-    // no interpolation
+    // 보간 없음
     Points points;
 
     int left = min(line.start.x, line.end.x);
@@ -85,10 +85,10 @@ struct LineToPointCachingAdapter
     int dx = right - left;
     int dy = line.end.y - line.start.y;
     
-    // only vertical or horizontal lines
+    // 수직 또는 수평 라인만 존재
     if (dx == 0)
     {
-      // vertical
+      // 수직
       for (int y = top; y <= bottom; ++y)
       {
         points.emplace_back(Point{ left,y });

@@ -68,33 +68,33 @@ public:
 #include <cctype>
 #include <locale>
 
-// trim from start (in place)
+// 앞 트림 (즉석)
 static inline void ltrim(std::string &s) {
   s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
     return !std::isspace(ch);
   }));
 }
 
-// trim from end (in place)
+// 뒷 트림 (즉석)
 static inline void rtrim(std::string &s) {
   s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
     return !std::isspace(ch);
   }).base(), s.end());
 }
 
-// trim from both ends (in place)
+// 양쪽 트림 (즉석)
 static inline void trim(std::string &s) {
   ltrim(s);
   rtrim(s);
 }
 
-// trim from start (copying)
+// 앞 트림 (복제)
 static inline std::string ltrim_copy(std::string s) {
   ltrim(s);
   return s;
 }
 
-// trim from end (copying)
+// 뒷 트림 (복제)
 static inline std::string rtrim_copy(std::string s) {
   rtrim(s);
   return s;

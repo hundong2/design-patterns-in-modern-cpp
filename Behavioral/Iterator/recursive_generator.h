@@ -2,16 +2,16 @@
 
 #include <experimental/coroutine>
 
-// This class implements delegating (potentially recursive) recursive_generator.
-// It supports two kind of yield expressions:
+// 이 클래스는 재귀적으로 동작할 수 있는 recursive_generator에 위임하는 방식의 구현을 보여준다.
+// 다음과 같이 두 종류의 중간 산출 표현을 지원한다.
 //
 //    co_yield V;
 //    co_yield G_of_T;
 //
-// Where V is a value convertible to T and
-// G_of_T is a recursive_generator<T>.
+// 여기서 V는 T로 변환될 수 있는 어떤 값이고,
+// G_of_T는 recursive_generator<T> 타입 객체이다.
 //
-// Usage example:
+// 다음은 사용예다:
 //
 //   #include <stdio.h>
 //   #include "recursive_recursive_generator.h"
@@ -34,7 +34,7 @@
 //     puts("");
 //   }
 //
-// Output: 1 10 11 12 13 14 -1 1000 2000 3000 4000 5000 6000 7000 8000 9000
+// 출력 결과: 1 10 11 12 13 14 -1 1000 2000 3000 4000 5000 6000 7000 8000 9000
 
 
 template <typename T> struct recursive_generator {

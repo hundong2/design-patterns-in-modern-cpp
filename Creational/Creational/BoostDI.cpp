@@ -1,4 +1,4 @@
-﻿#include "di.hpp"
+﻿#include "boost/di.hpp"
 #include <cstdio>
 #include <iostream>
 #include <memory>
@@ -60,7 +60,7 @@ struct Car
 
 int main123()
 {
-  // manual
+  // 수작업 방식
   auto logger = make_shared<ConsoleLogger>();
   auto c = make_shared<Car>(make_unique<Engine>(),logger);
 

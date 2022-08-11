@@ -34,7 +34,7 @@ struct PlayerScoredData : EventData
 
 struct Game
 {
-  signal<void(EventData*)> events; // observer
+  signal<void(EventData*)> events; // 관찰자
 };
 
 struct Player
@@ -65,7 +65,7 @@ struct Coach
   explicit Coach(Game& game)
     : game(game)
   {
-    // celebrate if player has scored <3 goals
+    // 선수가 3점 미만의 득점을 했으면 격려해준다
     game.events.connect([](EventData* e)
     {
       PlayerScoredData* ps = dynamic_cast<PlayerScoredData*>(e);

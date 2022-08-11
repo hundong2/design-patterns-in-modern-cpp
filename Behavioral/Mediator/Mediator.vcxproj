@@ -22,7 +22,7 @@
     <ProjectGuid>{2BA20722-68EB-4E4E-9FC9-7E2F0DE71D16}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Mediator</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -88,6 +88,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>c:\boost</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <EnableModules>true</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,11 +160,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\rxcpp.2.3.0\build\native\rxcpp.targets" Condition="Exists('..\packages\rxcpp.2.3.0\build\native\rxcpp.targets')" />
+    <Import Project="..\..\packages\rxcpp.4.0.0\build\native\rxcpp.targets" Condition="Exists('..\..\packages\rxcpp.4.0.0\build\native\rxcpp.targets')" />
+    <Import Project="..\..\packages\boost.1.69.0.0\build\boost.targets" Condition="Exists('..\..\packages\boost.1.69.0.0\build\boost.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\rxcpp.2.3.0\build\native\rxcpp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rxcpp.2.3.0\build\native\rxcpp.targets'))" />
+    <Error Condition="!Exists('..\..\packages\boost.1.69.0.0\build\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\boost.1.69.0.0\build\boost.targets'))" />
   </Target>
 </Project>

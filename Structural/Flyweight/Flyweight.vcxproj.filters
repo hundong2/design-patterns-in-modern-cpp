@@ -4,4 +4,7 @@
     <ClCompile Include="flyweight.cpp" />
     <ClCompile Include="capitalize.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

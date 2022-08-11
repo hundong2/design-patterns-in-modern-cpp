@@ -1,4 +1,10 @@
-﻿#include "headers.hpp"
+﻿//#include "headers.hpp"
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 struct BankAccount
 {

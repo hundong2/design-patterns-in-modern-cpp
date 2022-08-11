@@ -101,7 +101,7 @@ int main()
     void warn(const string& s) override {}
   };
   
-  // this will crash
+  // 다음 코드는 크래시가 발생한다.
   shared_ptr<Logger> empty_logger;
   auto logger = make_shared<NullLogger>();
   BankAccount account{ "primary account", 1000 };

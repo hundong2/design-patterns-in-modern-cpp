@@ -46,8 +46,8 @@ public:
 
 int main()
 {
-  // lowercase then split
-  // start on lowercase 's'
+  // 소문자로 만든 후 나눈다.
+  // s의 소문자에서 시작한다.
   //String s{ "Hello   World" };
   
   /*vector<string> parts;
@@ -60,9 +60,9 @@ int main()
   auto parts = s.to_lower_copy().split();
   for (const auto& p : parts)
   {
-    // portable
+    // 호환 가능하다.
     cout << p.get_length() << endl;
-    // not portable
+    // 호환성이 떨어진다.
     cout << p.length << endl;
   }
   

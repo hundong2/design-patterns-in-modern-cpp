@@ -87,7 +87,7 @@ namespace
     }
   };
 
-  int main()
+  int main_test3()
   {
     Person p{ 14 };
     ConsoleListener cl;

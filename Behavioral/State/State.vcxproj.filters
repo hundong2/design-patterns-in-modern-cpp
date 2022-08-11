@@ -4,8 +4,11 @@
     <ClInclude Include="stateless.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="basic.cpp" />
     <ClCompile Include="msm.cpp" />
-    <ClCompile Include="state_driven.cpp" />
+    <ClCompile Include="classic.cpp" />
+    <ClCompile Include="handmade.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

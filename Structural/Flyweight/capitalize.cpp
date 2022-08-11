@@ -28,7 +28,7 @@ public:
   friend std::ostream& operator<<(std::ostream& os, const FormattedText& obj)
   {
     string s;
-    for (int i = 0; i < obj.plain_text.length(); ++i)
+    for (unsigned int i = 0; i < obj.plain_text.length(); ++i)
     {
       char c = obj.plain_text[i];
       s += (obj.caps[i] ? toupper(c) : c);

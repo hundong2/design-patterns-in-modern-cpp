@@ -30,9 +30,9 @@ struct Spaceship : GameObjectImpl<Spaceship> {};
 struct ArmedSpaceship : Spaceship
 {
 	type_index type() const override {
-		return typeid(ArmedSpaceship); // required for collision to function
+		return typeid(ArmedSpaceship); // 충돌이 동작하기 위해 필요하다
 	}
-}; // model limitation
+}; // 모델 제약
 
 void spaceship_planet() { cout << "spaceship lands on planet\n"; }
 void asteroid_planet() { cout << "asteroid burns up in atmosphere\n"; }
@@ -61,7 +61,7 @@ void collide(GameObject& first, GameObject& second)
 	it->second();
 }
 
-int main__(int argc, char* argv[])
+int main_test1(int argc, char* argv[])
 {
 	ArmedSpaceship spaceship;
 	Asteroid asteroid;
@@ -75,7 +75,7 @@ int main__(int argc, char* argv[])
 	cout << "Member collision:\n";
 	planet.collide(asteroid);
 
-	// but this won't work
+	// 하지만 동작하지 않는다.
 	spaceship.collide(planet);
 
 	getchar();

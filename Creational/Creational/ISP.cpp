@@ -15,9 +15,9 @@ struct Document;
 //  void scan(Document& doc) override;
 //};
 
-// 1. Recompile
-// 2. Client does not need this
-// 3. Forcing implementors to implement too much
+// 1. 재검파일
+// 2. 클라이언트는 이것을 필요로 하지 않는다
+// 3. 구현자에게 불필요하게 많은 것을 구현하게 강제한다
 
 struct IPrinter
 {

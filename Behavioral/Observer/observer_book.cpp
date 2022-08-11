@@ -125,7 +125,7 @@ struct TrafficAdministration : Observer<Person>
         cout << "Whoa there, you are not old enough to drive!\n";
       else
       {
-        // oh, ok, they are old enough, let's not monitor them anymore
+        // 이제 적정연령에 도달 했으니 더 이상 모니터링할 필요가 없다.
         cout << "We no longer care!\n";
         source.unsubscribe(this);
       }
@@ -152,6 +152,6 @@ int main()
 	p.set_age(17);
 	p.set_age(21);
 
-  getchar();
+    getchar();
 	return 0;
 }

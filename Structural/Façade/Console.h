@@ -2,9 +2,46 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Window.h"
-#include "TextBuffer.h"
+//#include "Window.h"
+//#include "TextBuffer.h"
 using namespace std;
+
+
+class Point 
+{
+public:
+    Point() {}
+    Point(int x, int y) {}
+};
+
+
+class TextBuffer
+{
+public:
+    TextBuffer(int w, int h) {}
+    void add_string(string& str, int idx){}
+    int get_size() { return 0; }
+};
+
+
+class Viewport
+{
+public:
+    Viewport(shared_ptr<TextBuffer> buffer) {}
+    Viewport(shared_ptr<TextBuffer> buffer, int size, Point& start_p, Point& end_p) {}
+};
+
+
+class Window
+{
+public:
+    Window(const string& title, int w, int h) {}
+    vector<shared_ptr<TextBuffer>> buffers;
+    vector<shared_ptr<Viewport>> viewports;
+
+    void Show(){};
+};
+
 
 class Console
 {
@@ -17,7 +54,7 @@ public:
 
   vector<shared_ptr<Window>> windows;
 
-  // cannot make this static
+  // static으로 만들 수 없다.
   shared_ptr<Window> single(const string& title, uint8_t charsWide, uint8_t charsHigh)
   {
     auto w = make_shared<Window>(title, charsWide * charWidth, charsHigh * charHeight);

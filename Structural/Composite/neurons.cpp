@@ -42,7 +42,7 @@ struct Neuron : SomeNeurons<Neuron>
       connect_to(target);
   }*/
 
-  // legal in MSVC only
+  // MSVC에서만 정상적으로 컴파일된다.
   /*template<> void connect_to<Neuron>(Neuron& other)
   {
     out.push_back(&other);
@@ -85,6 +85,7 @@ struct NeuronLayer : vector<Neuron>, SomeNeurons<NeuronLayer>
   }
 };
 
+#if 0
 void main()
 {
   Neuron n1, n2;
@@ -104,3 +105,4 @@ void main()
   cout << "Layer l2" << endl << l2;
   cout << "Layer l3" << endl << l3;
 }
+#endif

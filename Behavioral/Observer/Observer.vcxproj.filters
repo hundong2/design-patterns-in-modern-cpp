@@ -7,4 +7,7 @@
     <ClCompile Include="observer2.cpp" />
     <ClCompile Include="observer3.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

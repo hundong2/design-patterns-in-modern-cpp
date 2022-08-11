@@ -74,8 +74,8 @@ namespace
 
   TEST_F(Evaluate, SimpleTest)
   {
-    ASSERT_EQ("Drawing Square as lines",
-      Square{VectorRenderer{}}.str())
+      ASSERT_EQ("Drawing Square as lines",
+          Square{ VectorRenderer{} }.str());
   }
 
 } // namespace

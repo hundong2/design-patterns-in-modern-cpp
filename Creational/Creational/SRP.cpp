@@ -17,7 +17,7 @@ struct Journal
 
   void add(const string& entry);
 
-  // persistence is a separate concern
+  // 저장소는 별개의 독립적인 이해관계이다.
   void save(const string& filename);
 };
 

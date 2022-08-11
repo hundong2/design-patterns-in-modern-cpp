@@ -33,7 +33,7 @@ struct PhoneThrownIntoWall {};
 
 struct PhoneStateMachine : state_machine_def<PhoneStateMachine>
 {
-  bool angry{ true }; // start with false
+  bool angry{ false }; // 처음에는 화가 나지 않은 생태이다.
 
   struct OffHook : state<> {};
   struct Connecting : state<>
@@ -43,7 +43,7 @@ struct PhoneStateMachine : state_machine_def<PhoneStateMachine>
     {
       cout << "We are connecting..." << endl;
     }
-    // also on_exit
+    // on_exit도 필요하다.
   };
   struct Connected : state<> {};
   struct OnHold : state<> {};
@@ -67,7 +67,7 @@ struct PhoneStateMachine : state_machine_def<PhoneStateMachine>
     }
   };
 
-  // start, event, target, action, guard
+  // 시작 상태, 이벤트, 타깃, 액션, 가드
   struct transition_table : mpl::vector <
     Row<OffHook, CallDialed, Connecting>,
     Row<Connecting, CallConnected, Connected>,
@@ -76,10 +76,10 @@ struct PhoneStateMachine : state_machine_def<PhoneStateMachine>
         PhoneBeingDestroyed, CanDestroyPhone>
   > {};
 
-  // starting state
+  // 시작 상태
   typedef OffHook initial_state;
 
-  // what happens if there's nowhere to go
+  // 전이할 상태가 없는 경우
   template <class FSM, class Event>
   void no_transition(Event const& e, FSM&, int state)
   {
@@ -111,7 +111,7 @@ int main()
   phone.process_event(PhoneThrownIntoWall{});
   info();
 
-  // try process_event here :)
+  // process_event는 여기서 수행
   phone.process_event(CallDialed{});
 
   cout << "We are done using the phone" << "\n";

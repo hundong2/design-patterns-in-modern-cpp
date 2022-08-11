@@ -53,7 +53,7 @@ public:
 
 int main_z()
 {
-  // will not work
+  // 다음 코드는 동작하지 않는다
   //Point p{ 1,2 };
 
   auto p = Point::NewPolar(5, M_PI_4);

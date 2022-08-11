@@ -22,8 +22,6 @@ struct PaymentProcessing
 
   LogType log;
 
-  // alternatively, ctor
-
   void Process()
   {
     log.LogMessage("Processing payments...");

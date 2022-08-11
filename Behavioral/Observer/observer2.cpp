@@ -55,7 +55,7 @@ struct Person
   {
     lock_guard<mutex> guard{ mtx };
 
-    // prevent existing references?
+    // 기 존재하는 참조를 방지해야 할까?
     if (find(begin(listeners), end(listeners), pl) == end(listeners))
       listeners.push_back(pl);
   }
@@ -63,13 +63,13 @@ struct Person
   {
     lock_guard<mutex> guard{ mtx };
     if (listeners.empty()) return;
-    // multiple identical listeners?
-    // erase-remove idiom?
+    // 복수의 동일한 리스너들?
+    // 삭제하고 이동하기 관례?
     for (auto it = listeners.begin(); it != listeners.end(); ++it)
     {
       if (*it == pl)
       {
-        *it = nullptr; // just mark as nullptr
+        *it = nullptr; // 그냥 nullptr로 표시한다
       }
     }
   }
@@ -84,15 +84,16 @@ private:
       if (listener)
         listener->person_changed(*this, property_name, new_value);
 
-    // erase-remove 
+    // 삭제하고 이동하기
     listeners.erase(
       remove(listeners.begin(), listeners.end(), nullptr),
       listeners.end()
     );
   }
 
-  // std::list (easier to remove elements)
-  // concurrent_vector? yes, but no easy erase-remove
+  // std::list (항목의 삭제가 더 쉽다)
+  // concurrent_vector는 어떠한가? 가능하다. 
+  // 하지만 삭제하고 이동하기 관례의 적용이 어렵다.
 };
 
 struct ConsoleListener : PersonListener
@@ -113,12 +114,12 @@ struct ConsoleListener : PersonListener
   }
 };
 
-int main__x_()
+int main_test4()
 {
   Person p{ 14 };
   ConsoleListener cl;
   p.subscribe(&cl);
-  p.subscribe(&cl); // ignored
+  p.subscribe(&cl); // 무시된다
   p.set_age(15);
   p.set_age(16);
   p.ubsubscribe(&cl);

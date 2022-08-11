@@ -20,7 +20,7 @@ struct Query
   }
 };
 
-struct Game // mediator
+struct Game // 매게자
 {
   signal<void(Query&)> queries;
 };
@@ -39,7 +39,7 @@ public:
   {
   }
   
-  // no need for this to be virtual
+  // 버추얼 메소드일 필요는 없다
   int GetAttack() const
   {
     Query q{ name, Query::Argument::attack, attack };
@@ -63,7 +63,7 @@ class CreatureModifier
 public:
   virtual ~CreatureModifier() = default;
 
-  // there is no handle() function
+  // handle() 함수는 없다. 
 
   CreatureModifier(Game& game, Creature& creature)
     : game(game),
@@ -79,8 +79,8 @@ public:
   DoubleAttackModifier(Game& game, Creature& creature)
     : CreatureModifier(game, creature)
   {
-    // whenever someone wants this creature's attack,
-    // we return DOUBLE the value
+    // 이 크리쳐의 공격력 값을 참조하려 하면 
+    // 원래 값의 두 배를 리턴한다. 
     conn = game.queries.connect([&](Query& q)
     {
       if (q.creature_name == creature.name && 
@@ -95,7 +95,7 @@ public:
   }
 };
 
-// similar idea, but Query instead of Command
+// 비슷한 아이디어이다. Query 대신 Command를 쓴다는 것만 다르다. 
 int main(int ac, char* av)
 {
   Game game;

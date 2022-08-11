@@ -1,5 +1,4 @@
-// Objects in a program should be replaceable with instances of their subtypes
-// w/o altering the correctness of the program
+// 어떤 객체가 그 서브타입의 객체로 치환되어도 프로그램이 올바르게 동작해야 한다.
 
 #include <iostream>
 

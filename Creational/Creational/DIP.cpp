@@ -4,10 +4,10 @@
 #include <tuple>
 using namespace std;
 
-// A. High-level modules should not depend on low-level modules.
-//    Both should depend on abstractions.
-// B. Abstractions should not depend on details. 
-//    Details should depend on abstractions.
+// A. 상위 모듈이 하위 모듈에 종속되어서는 안된다.
+//    둘 다 추상화에 종속되어야 한다.
+// B. 추상화는 상세한 부분에 종속되어서는 안된다.
+//    상세 사항이 추상화에 종속되어야 한다.
 
 enum class Relationship
 {
@@ -72,7 +72,7 @@ struct Research // high-level
 //  }
 };
 
-int main()
+int main_dip()
 {
   Person parent{"John"};
   Person child1{"Chris"};

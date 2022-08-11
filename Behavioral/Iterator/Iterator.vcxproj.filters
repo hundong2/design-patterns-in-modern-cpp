@@ -5,9 +5,9 @@
     <ClCompile Include="facade.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="recursive_generator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="recursive_generator.h" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

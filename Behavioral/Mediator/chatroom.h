@@ -2,7 +2,7 @@
 
 struct ChatRoom
 {
-  vector<Person*> people; // assume append-only
+  vector<Person*> people; // 추가만 한다고 가정한다
 
   void join(Person* p);
   void broadcast(const string& origin, const string& message);

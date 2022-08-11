@@ -10,7 +10,7 @@ using namespace std;
 
 template <typename T> struct BinaryTree;
 
-// todo: refactor to refer to parent instead of entire tree
+// todo: 전체 트리가 아니라 부모를 참조하도록 리펙토링
 template <typename T> struct Node
 {
   T value = T();
@@ -74,7 +74,7 @@ template <typename T> struct BinaryTree
       return current != other.current;
     }
 
-    // no continuations in C++ (unlike C#)
+    // C++에는 C#의 continuation 기능이 없다
     PreOrderIterator<U>& operator++() 
     {
       if (current->right)
@@ -116,8 +116,8 @@ template <typename T> struct BinaryTree
     return iterator{ n };
   }
 
-  // expose as a traversal object
-  // todo: make this inorder
+  // 순회 객체로서 노출
+  // todo: 중위 순위 순회로 바꾸기
   class pre_order_traversal
   {
     BinaryTree<T>& tree;
@@ -127,7 +127,7 @@ template <typename T> struct BinaryTree
     iterator end() { return tree.end(); }
   } pre_order;
 
-  // todo: postorder iterator using recursive coroutines
+  // todo: 재귀 코루틴을 이용해 후위 순위 반복자 만들기
 
   experimental::generator<Node<T>*> post_order()
   {
@@ -135,7 +135,7 @@ template <typename T> struct BinaryTree
   }
 
 private:
-  // or use a recursive_generator
+  // 또는 recursive_generator를 사용
   experimental::generator<Node<T>*> post_order_impl(Node<T>* node)
   {
     if (node)
@@ -165,8 +165,8 @@ void std_iterators()
     cout << "another name: " << *it << "\n";
   }
 
-  // traversing the entire vector backwards
-  // note global rbegin/rend, note ++ not --
+  // vector 전체를 거꾸로 순회
+  // 노트: rbegin/rend는 글로벌 함수임, 그리고 -- 가 아니라 ++ 임
   // expand auto here
   for (auto ri = rbegin(names); ri != rend(names); ++ri)
   {
@@ -185,7 +185,7 @@ void std_iterators()
     cout << "name = " << name << "\n";
 }
 
-// in order traversal
+// 중위 순서 순회
 void binary_tree_iterator()
 {
   //         me
@@ -204,7 +204,7 @@ void binary_tree_iterator()
     }
   };
 
-  // pre order traversal
+  // 전위 순서 순회
   for (auto it = family.begin(); it != family.end(); ++it)
   {
     cout << (*it).value << "\n";
@@ -212,7 +212,7 @@ void binary_tree_iterator()
 
   cout << "=== and now, through a dedicated object:\n";
 
-  // use iterator name
+  // 반복자 이름 사용
   for (const auto& it: family.pre_order)
   {
     cout << it.value << "\n";
@@ -220,7 +220,7 @@ void binary_tree_iterator()
 
   cout << "=== postorder travesal with coroutines:\n";
 
-  // use coroutines (yields pointers!)
+  // 코루틴 사용 (포인터 중간 결과!)
   // postorder: m'm, m'f m f me
   for (auto it: family.post_order())
   {

@@ -4,4 +4,7 @@
     <ClCompile Include="command.cpp" />
     <ClCompile Include="command_undo.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

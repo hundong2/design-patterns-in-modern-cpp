@@ -44,7 +44,7 @@ vector<Token> lex(const string& input)
       result.push_back(Token{ Token::rparen, ")" });
       break;
     default:
-      // number
+      // 숫자
       ostringstream buffer;
       buffer << input[i];
       for (int j = i + 1; j < input.size(); ++j)
@@ -150,10 +150,10 @@ shared_ptr<Element> parse(const vector<Token>& tokens)
 
 int main()
 {
-  string input{ "(13-4)-(12+1)" }; // see if you can make nested braces work
+  string input{ "(13-4)-(12+1)" }; // 중첩된 괄호를 처리할 수 있는지 보자
   auto tokens = lex(input);
 
-  // let's see the tokens
+  // 토큰 확인
   for (auto& t : tokens)
     cout << t << "   ";
   cout << endl;

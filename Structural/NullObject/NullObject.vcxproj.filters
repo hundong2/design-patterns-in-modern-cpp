@@ -3,4 +3,7 @@
   <ItemGroup>
     <ClCompile Include="nullobject.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

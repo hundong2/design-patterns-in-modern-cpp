@@ -73,7 +73,7 @@ struct BankAccountCommand : Command
   }
 };
 
-// vector doesn't have virtual dtor, but who cares?
+// vector는 버추얼 소멸자가 없다. 어쩌겠는가? ...
 struct CompositeBankAccountCommand 
   : vector<BankAccountCommand>, Command
 {
@@ -104,7 +104,7 @@ int main_987()
 
   cout << ba.balance << endl;
 
-  // apply all the commands
+  // 모든 명령을 적용
   /*for (auto& cmd : commands)
   {
     cmd.call();

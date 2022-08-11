@@ -38,7 +38,7 @@ private:
   int age;
 };
 
-int main_()
+int main_test5()
 {
   Person p{123};
   p.property_changed.connect([](Person&, const string& prop_name)

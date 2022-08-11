@@ -6,6 +6,6 @@
     <ClCompile Include="CompositeCodingExercise.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graphics.hpp" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

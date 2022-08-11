@@ -99,14 +99,15 @@ void PrintVisitor::visit(const Addition& addition)
   this->oss << ")";
 }
 
-// dispatch - single, double, multiple
+// 디스패치 - 단일, 이중, 복수
 
-// acyclic visitors
+// 비순환 방문자
 
-// loki multimethods and https://ideone.com/8VxALs
+// "loki multimethods"와 https://ideone.com/8VxALs
 
 // https://github.com/Flast/multimethod
-// also one of the answers here http://stackoverflow.com/questions/23336586/did-the-loki-multimethods-make-it-into-c11
+// 또 다른 방법론은 아래에서 찾을 수 있다. 
+// http://stackoverflow.com/questions/23336586/did-the-loki-multimethods-make-it-into-c11
 
 std::shared_ptr<Literal> lit(double value)
 {
@@ -135,7 +136,7 @@ void dynamic_visitor()
 
 void static_visitor()
 {
-  ostringstream oss; // visitor
+  ostringstream oss; // 방문자
   add(add(lit(1), lit(2)), lit(3))->print(oss);
   cout << oss.str() << endl;
 }

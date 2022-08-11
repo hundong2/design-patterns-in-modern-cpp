@@ -11,7 +11,7 @@ struct BankAccount
   virtual void withdraw(int amount) = 0;
 };
 
-struct CurrentAccount : BankAccount // checking
+struct CurrentAccount : BankAccount // 검사
 {
   explicit CurrentAccount(const int balance)
     : balance(balance)
@@ -82,7 +82,7 @@ void draw_image(Image& img)
 void virtual_proxy()
 {
   LazyBitmap img{ "pokemon.png" };
-  draw_image(img); // loaded whether the bitmap is loaded or not
+  draw_image(img); // 비트맵이 로딩되었는지 안되었는지 확인
   draw_image(img);
 }
 
@@ -92,12 +92,12 @@ void smart_pointers()
   a->deposit(321);
   delete a;
 
-  // << will not work if you make this a shared_ptr<BankAccount>
+  // 아래를 shared_ptr<BankAccount>로 만들면 << 연산자가 동작하지 않는다.
   auto b = make_shared<CurrentAccount>(123);
 
   BankAccount* actual = b.get(); // pointer's own operations on a .
-  b->deposit(321); // underlying object's operations are on ->
-                   // note this expression is identical to what's above
+  b->deposit(321); // 객체의 동작은 -> 으로 접근된다.
+                   // 노트: 이 표현식은 위의 것과 동일하다.
   cout << *b << endl;
   // no delete
 
@@ -120,11 +120,11 @@ struct Pong : Pingable
 
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
-using namespace utility;                    // Common utilities like string conversions
-using namespace web;                        // Common features like URIs.
-using namespace web::http;                  // Common HTTP functionality
-using namespace web::http::client;          // HTTP client features
-using namespace concurrency::streams;       // Asynchronous streams
+using namespace utility;                    // 문자열 변환등 공통 유틸리티
+using namespace web;                        // URI등 공통 웹 기능
+using namespace web::http;                  // HTTP 관련 공통 기능
+using namespace web::http::client;          // HTTP 클라이언트 기능
+using namespace concurrency::streams;       // 비동기 스트림
 
 struct RemotePong : Pingable
 {

@@ -9,7 +9,7 @@ struct Element
 
 	// print
 	virtual void print_html(ostringstream& oss) const = 0;
-	// violates open-closed
+	// 열림-닫힘 원칙을 위해한다.
 	// virtual void print_markdown(ostringstream& oss) const = 0;
 
 	// visitor

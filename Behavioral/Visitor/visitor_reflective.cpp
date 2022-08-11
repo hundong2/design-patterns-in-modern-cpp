@@ -1,4 +1,3 @@
-// visitor examples for design patterns c++ book
 #include <sstream>
 #include <string>
 #include <iostream>

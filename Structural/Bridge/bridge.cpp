@@ -4,10 +4,10 @@
 #include "Person.h"
 using namespace std;
 
-// two classes of objects
+// 객체에 대한 두 종류의 클래스
 
-// Renderers - determine how an object is drawn
-// Shapes - determine what to draw
+// Renderers - 객체가 어떻게 그려지는지 결정한다.
+// Shapes - 무엇을 그릴지 결정한다.
 
 struct Renderer
 {
@@ -36,8 +36,8 @@ protected:
   Renderer& renderer;
   Shape(Renderer& renderer) : renderer{ renderer } {}
 public:
-  virtual void draw() = 0; // implementation specific
-  virtual void resize(float factor) = 0; // abstraction specific
+  virtual void draw() = 0; // 구현 종속적이다.
+  virtual void resize(float factor) = 0; // 추상화에 종속적이다.
 };
 
 struct Circle : Shape

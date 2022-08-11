@@ -126,7 +126,6 @@
     <ClInclude Include="DrinkFactory.h">
       <Filter>Factory\AbstractFactory</Filter>
     </ClInclude>
-    <ClInclude Include="di.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="capitals.txt">
@@ -136,5 +135,8 @@
     <Text Include="FactoryCodingExercise.cpp">
       <Filter>Singleton</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

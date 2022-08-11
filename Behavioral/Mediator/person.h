@@ -19,7 +19,7 @@ struct Person
 
   void pm(const string& who, const string& message) const;
 
-  // generated in IDE
+  // IDE에서 자동으로 생성된 코드이다
   friend bool operator==(const Person& lhs, const Person& rhs)
   {
     return lhs.name == rhs.name;

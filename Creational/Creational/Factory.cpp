@@ -21,7 +21,7 @@ class Point
     }
   }*/
 
-  // use a factory method
+  // 펙토리 메서드 사용
   Point(float x, float y) : x(x), y(y){}
 public:
   float x, y;

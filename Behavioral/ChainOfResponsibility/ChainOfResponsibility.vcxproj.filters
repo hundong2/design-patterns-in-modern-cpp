@@ -4,4 +4,7 @@
     <ClCompile Include="cor_pointer.cpp" />
     <ClCompile Include="cor_broker.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

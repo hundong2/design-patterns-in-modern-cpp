@@ -4,4 +4,7 @@
     <ClCompile Include="strategy_dynamic.cpp" />
     <ClCompile Include="strategy_static.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

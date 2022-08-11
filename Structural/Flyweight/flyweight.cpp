@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#define _SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING
+
+#include <iostream>
 #include <string>
 #include <cstdint>
 using namespace std;
@@ -9,14 +11,14 @@ using namespace std;
 using namespace boost;
 using namespace flyweights;
 
-// coloring in the console by-letter vs using ranges
+// 문자 단위 vs 범위 단위 콘솔 컬러링
 
 // boost.flyweight  
 
-// naive
+// 단순한 방법
 typedef uint32_t key;
 
-// mmorpg
+// MMORPG 게임에서의 사용자
 struct User
 {
   User(const string& first_name, const string& last_name)
@@ -51,7 +53,7 @@ struct User
 
 protected:
   static bimap<key, string> names;
-  static int seed;
+  static key seed;
 
   static key add(const string& s)
   {

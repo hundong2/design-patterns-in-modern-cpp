@@ -49,7 +49,7 @@ struct HtmlBuilder
     root.name = root_name;
   }
 
-  // void to start with
+  // 공백 상태에서 시작한다.
   HtmlBuilder& add_child(string child_name, string child_text)
   {
     HtmlElement e{ child_name, child_text };
@@ -57,7 +57,7 @@ struct HtmlBuilder
     return *this;
   }
 
-  // pointer based
+  // 포인터에 기반한다.
   HtmlBuilder* add_child_2(string child_name, string child_text)
   {
     HtmlElement e{ child_name, child_text };
@@ -90,7 +90,7 @@ int demo()
   oss << "</ul>";
   printf(oss.str().c_str());
 
-  // easier
+  // 더 쉽다
   HtmlBuilder builder{ "ul" };
   builder.add_child("li", "hello").add_child("li", "world");
   cout << builder.str() << endl;

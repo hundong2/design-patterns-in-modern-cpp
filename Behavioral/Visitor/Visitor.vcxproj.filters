@@ -7,11 +7,12 @@
     <ClCompile Include="visitor_intrusive.cpp" />
     <ClCompile Include="visitor_reflective.cpp" />
     <ClCompile Include="visitor_double.cpp" />
-    <ClCompile Include="visitor_multiple.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="model.hpp" />
     <ClInclude Include="visitor.hpp" />
-    <ClInclude Include="acyclic.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

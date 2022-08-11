@@ -1,6 +1,6 @@
-// open closed principle
+// 열림-닫힘 원칙
 
-// open for extension, closed for modification
+// 확장에는 열려있고 수정에는 닫혀 있어야 한다.
 
 #include <string>
 #include <vector>
@@ -55,14 +55,14 @@ template <typename T> struct Specification
 {
   virtual bool is_satisfied(T* item) = 0;
 
-  // new: breaks OCP if you add it post-hoc
+  // 새로운 코드: 나중에 추가하게 되면 OCP를 위배하게 된다.
   /*AndSpecification<T> operator&&(Specification<T>&& other)
   {
     return AndSpecification<T>(*this, other);
   }*/
 };
 
-// new: 
+// 새로운 코드: 
 template <typename T> AndSpecification<T> operator&&
   (Specification<T>&& first, Specification<T>&& second)
 {
@@ -127,9 +127,9 @@ template <typename T> struct AndSpecification : Specification<T>
   }
 };
 
-// new:
+// 새로운 코드:
 
-int main()
+int main_ocp()
 {
   Product apple{"Apple", Color::green, Size::small};
   Product tree{"Tree", Color::green, Size::large};
